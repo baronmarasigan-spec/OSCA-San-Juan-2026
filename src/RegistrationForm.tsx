@@ -18,6 +18,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { API_BASE_URL } from './config';
 import { cn } from './lib/utils';
 
 import { Application } from './App';
@@ -328,7 +329,7 @@ export default function RegistrationForm({
     const payload = buildPayload(formData);
 
     try {
-      const response = await fetch("/api/proxy/dbosca/applications", {
+      const response = await fetch(`${API_BASE_URL}/applications`, {
         method: "POST",
         headers: {
           "Accept": "application/json"

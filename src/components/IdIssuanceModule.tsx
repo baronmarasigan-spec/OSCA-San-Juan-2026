@@ -41,6 +41,7 @@ import WalkInIdIssuanceModal from './WalkInIdIssuanceModal';
 import { IDCard } from './IDCard';
 import { OscaApplicationForm } from './OscaApplicationForm';
 import { QRCodeSVG } from 'qrcode.react';
+import { API_BASE_URL } from '../config';
 
 interface IdIssuanceModuleProps {
   type: 'Management' | 'Walk-In';
@@ -698,7 +699,7 @@ export default function IdIssuanceModule({ type, applications, onUnauthorized }:
         headers["Authorization"] = `Bearer ${token}`;
       }
 
-      const response = await fetch("/api/proxy/dbosca/id-issuances", { 
+      const response = await fetch(`${API_BASE_URL}/id-issuances`, { 
         method: "GET",
         headers 
       });
@@ -812,7 +813,7 @@ export default function IdIssuanceModule({ type, applications, onUnauthorized }:
       }
 
       // Fetch more records for walk-in filtering
-      const response = await fetch("/api/proxy/dbosca/masterlist?per_page=5000", { 
+      const response = await fetch(`${API_BASE_URL}/masterlist?per_page=5000`, { 
         method: "GET",
         headers 
       });
@@ -930,7 +931,7 @@ export default function IdIssuanceModule({ type, applications, onUnauthorized }:
         id_expiration_date
       };
 
-      const response = await fetch(`/api/proxy/dbosca/id-issuances/${statusRecord.id}`, {
+      const response = await fetch(`${API_BASE_URL}/id-issuances/${statusRecord.id}`, {
         method: "PATCH",
         headers,
         body: JSON.stringify(payload)
@@ -948,7 +949,7 @@ export default function IdIssuanceModule({ type, applications, onUnauthorized }:
             return status;
           };
 
-          await fetch(`/api/proxy/dbosca/masterlist/${statusRecord.citizen_id}`, {
+          await fetch(`${API_BASE_URL}/masterlist/${statusRecord.citizen_id}`, {
             method: "PATCH",
             headers,
             body: JSON.stringify({ id_status: mapStatus(newStatus) })
@@ -991,7 +992,7 @@ export default function IdIssuanceModule({ type, applications, onUnauthorized }:
         headers["Authorization"] = `Bearer ${token}`;
       }
 
-      const response = await fetch(`/api/proxy/dbosca/id-issuances/${recordToDelete.id}`, {
+      const response = await fetch(`${API_BASE_URL}/id-issuances/${recordToDelete.id}`, {
         method: "DELETE",
         headers
       });
@@ -2105,7 +2106,7 @@ const IdEditProfileModal = ({
         if (req2File) fd.append("req2", req2File);
       }
 
-      const response = await fetch(`/api/proxy/dbosca/id-issuances/${record.id}`, {
+      const response = await fetch(`${API_BASE_URL}/id-issuances/${record.id}`, {
         method: "POST", 
         headers: {
           "Authorization": `Bearer ${token}`,

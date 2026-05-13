@@ -8,6 +8,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { Application } from "./App";
+import { API_BASE_URL } from "./config";
 import {
   User,
   Heart,
@@ -396,7 +397,7 @@ export function AnnualCashGiftForm({
       }
 
       const response = await fetch(
-        "/api/proxy/dbosca/benefit-applications",
+        `${API_BASE_URL}/benefit-applications`,
         {
           method: "POST",
           headers: {
