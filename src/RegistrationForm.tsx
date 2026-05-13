@@ -1402,15 +1402,19 @@ export default function RegistrationForm({
                             className="absolute inset-0 opacity-0 cursor-pointer"
                           />
                           {formData.birthCertificate ? (
-                            <div className="flex flex-col items-center">
-                              <CheckCircle2 className="w-12 h-12 text-emerald-500 mb-2" />
-                              <p className="text-base font-medium text-slate-600 truncate max-w-full px-2">{formData.birthCertificate.name}</p>
+                            <div className="flex flex-col items-center w-full min-w-0">
+                              <CheckCircle2 className="w-12 h-12 text-emerald-500 mb-2 shrink-0" />
+                              <div className="w-full px-2 overflow-hidden">
+                                <p className="text-base font-medium text-slate-600 truncate text-center" title={formData.birthCertificate.name}>
+                                  {formData.birthCertificate.name}
+                                </p>
+                              </div>
                               <button 
                                 onClick={(e) => {
                                   e.preventDefault();
                                   setFormData(prev => ({ ...prev, birthCertificate: null }));
                                 }}
-                                className="mt-2 text-sm text-rose-500 hover:underline"
+                                className="mt-2 text-sm text-rose-500 hover:underline shrink-0"
                               >
                                 Replace file
                               </button>
@@ -1470,15 +1474,19 @@ export default function RegistrationForm({
                             className="absolute inset-0 opacity-0 cursor-pointer"
                           />
                           {formData.barangayCertificate ? (
-                            <div className="flex flex-col items-center">
-                              <CheckCircle2 className="w-12 h-12 text-emerald-500 mb-2" />
-                              <p className="text-base font-medium text-slate-600 truncate max-w-full px-2">{formData.barangayCertificate.name}</p>
+                            <div className="flex flex-col items-center w-full min-w-0">
+                              <CheckCircle2 className="w-12 h-12 text-emerald-500 mb-2 shrink-0" />
+                              <div className="w-full px-2 overflow-hidden">
+                                <p className="text-base font-medium text-slate-600 truncate text-center" title={formData.barangayCertificate.name}>
+                                  {formData.barangayCertificate.name}
+                                </p>
+                              </div>
                               <button 
                                 onClick={(e) => {
                                   e.preventDefault();
                                   setFormData(prev => ({ ...prev, barangayCertificate: null }));
                                 }}
-                                className="mt-2 text-sm text-rose-500 hover:underline"
+                                className="mt-2 text-sm text-rose-500 hover:underline shrink-0"
                               >
                                 Replace file
                               </button>
