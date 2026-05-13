@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from './lib/utils';
+import { API_BASE_URL } from './config';
 
 export default function LandingPage({ 
   onStartRegistration, 
@@ -67,7 +68,7 @@ export default function LandingPage({
         return;
       }
 
-      const res = await fetch("https://api-dbosca.drchiocms.com/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

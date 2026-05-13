@@ -483,7 +483,7 @@ export default function RegistrationProfileModal({ application, isOpen, onClose,
     try {
       const token = localStorage.getItem('token');
       // Updated to use the new view-file API endpoint as per request
-      const url = `https://api-dbosca.drchiocms.com/api/view-file?path=${encodeURIComponent(path)}`;
+      const url = `${API_BASE_URL}/view-file?path=${encodeURIComponent(path)}`;
       
       const response = await fetch(url, {
         headers: {

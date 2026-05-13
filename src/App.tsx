@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { API_BASE_URL } from './config';
 import LandingPage from './LandingPage';
 import RegistrationForm from './RegistrationForm';
 import AdminDashboard from './AdminDashboard';
@@ -110,7 +111,7 @@ export default function App() {
         headers["Authorization"] = `Bearer ${token}`;
       }
 
-      const response = await fetch("https://api-dbosca.drchiocms.com/api/applications", {
+      const response = await fetch(`${API_BASE_URL}/applications`, {
         method: "GET",
         headers
       });

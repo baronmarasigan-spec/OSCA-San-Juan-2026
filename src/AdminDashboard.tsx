@@ -787,13 +787,11 @@ export default function AdminDashboard({
         headers["Authorization"] = `Bearer ${token}`;
       }
 
-      const body: any = {
-        reg_status: status
+      const body: any = { 
+        reg_status: status,
+        status: status, // Send both just in case
+        rejection_remarks: remarks || "" // Ensure rejection_remarks is always a string
       };
-
-      if (remarks) {
-        body.rejection_remarks = remarks;
-      }
 
       // In Registration Management, we are always dealing with applications
       const endpoint = `${API_BASE_URL}/applications/${id}`;

@@ -70,7 +70,7 @@ export default function AnnualCashGiftManagement({
     setIsLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("https://api-dbosca.drchiocms.com/api/benefit-applications", {
+      const response = await fetch(`${API_BASE_URL}/benefit-applications`, {
         headers: {
           "Accept": "application/json",
           "Authorization": `Bearer ${token}`
@@ -205,7 +205,7 @@ export default function AnnualCashGiftManagement({
       const apiStatus = bulkDisbursementStatus.toLowerCase();
       
       const updatePromises = approvedSelectedIds.map(id => 
-        fetch(`https://api-dbosca.drchiocms.com/api/benefit-applications/${id}`, {
+        fetch(`${API_BASE_URL}/benefit-applications/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -385,8 +385,8 @@ export default function AnnualCashGiftManagement({
       const token = localStorage.getItem("token");
       const isNew = !updatedApp.id;
       const url = isNew 
-        ? "https://api-dbosca.drchiocms.com/api/benefit-applications" 
-        : `https://api-dbosca.drchiocms.com/api/benefit-applications/${updatedApp.id}`;
+        ? `${API_BASE_URL}/benefit-applications` 
+        : `${API_BASE_URL}/benefit-applications/${updatedApp.id}`;
       
       const fd = new FormData();
       
